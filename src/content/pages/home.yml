@@ -4,33 +4,54 @@ hero_eyebrow_en: DAEFLE-certified · New York City & online
 hero_eyebrow_fr: Certifiée DAEFLE · New York et en ligne
 hero_title_en: Learn French with warmth, structure, and a little joie de vivre.
 hero_title_fr: Apprenez le français avec chaleur, méthode et une pointe de joie de vivre.
-hero_text_en: Private lessons for adults and children, plus a complete French curriculum designed for homeschooling families in NYC.
-hero_text_fr: Cours particuliers pour adultes et enfants, et un programme de français complet conçu pour les familles homeschool de New York.
+hero_text_en: Private lessons for adults and children, plus a complete French
+  curriculum designed for homeschooling families in NYC.
+hero_text_fr: Cours particuliers pour adultes et enfants, et un programme de
+  français complet conçu pour les familles homeschool de New York.
 hero_image: /uploads/images/placeholder-hero.svg
 offerings:
   - title_en: For adults
     title_fr: Pour les adultes
-    text_en: Conversation, grammar, exam prep, or French for travel and work. Lessons shaped around your goals and your pace.
-    text_fr: Conversation, grammaire, préparation aux examens ou français pour voyager et travailler. Des cours adaptés à vos objectifs et à votre rythme.
+    text_en: Conversation, grammar, exam prep, or French for travel and work.
+      Lessons shaped around your goals and your pace.
+    text_fr: Conversation, grammaire, préparation aux examens ou français pour
+      voyager et travailler. Des cours adaptés à vos objectifs et à votre
+      rythme.
     link: lessons
   - title_en: For children
     title_fr: Pour les enfants
-    text_en: Playful, immersive lessons for ages 4 to 16 that build real confidence speaking, reading, and writing.
-    text_fr: Des cours ludiques et immersifs de 4 à 16 ans pour prendre confiance à l'oral, en lecture et à l'écrit.
+    text_en: Playful, immersive lessons for ages 4 to 16 that build real confidence
+      speaking, reading, and writing.
+    text_fr: Des cours ludiques et immersifs de 4 à 16 ans pour prendre confiance à
+      l'oral, en lecture et à l'écrit.
     link: lessons
   - title_en: Homeschool curriculum
     title_fr: Programme homeschool
-    text_en: A sequenced French program for NYC homeschoolers, with lesson plans, materials, and quarterly-report-ready records.
-    text_fr: Un programme de français progressif pour les familles homeschool de New York, avec plans de cours, supports et suivis prêts pour les rapports trimestriels.
+    text_en: A sequenced French program for NYC homeschoolers, with lesson plans,
+      materials, and quarterly-report-ready records.
+    text_fr: Un programme de français progressif pour les familles homeschool de New
+      York, avec plans de cours, supports et suivis prêts pour les rapports
+      trimestriels.
     link: homeschool
 intro_heading_en: Bonjour, I'm Madame [Name].
 intro_heading_fr: Bonjour, je suis Madame [Name].
-intro_body_en: |
-  I am a native French speaker and a **DAEFLE-certified** teacher of French as a foreign language. I have taught adults and children in classrooms and living rooms on both sides of the Atlantic, and I believe the best lessons feel like good conversation: attentive, encouraging, and a little bit fun.
+intro_body_en: >-
+  I am a native French speaker and a **DAEFLE-certified** teacher of French as a
+  foreign language. I have taught adults and children in classrooms and living
+  rooms on both sides of the Atlantic, and I believe the best lessons feel like
+  good conversation: attentive, encouraging, and a little bit fun.
 
-  Whether you are starting from *bonjour* or polishing your subjunctive, we will build a clear path together.
-intro_body_fr: |
-  Je suis de langue maternelle française et professeure de français langue étrangère **certifiée DAEFLE**. J'ai enseigné à des adultes et à des enfants, en classe comme à domicile, des deux côtés de l'Atlantique. Pour moi, un bon cours ressemble à une bonne conversation : attentif, encourageant et un peu joyeux.
 
-  Que vous partiez de *bonjour* ou que vous peaufiniez votre subjonctif, nous tracerons ensemble un chemin clair.
+  Whether you are starting from *bonjour* or polishing your subjunctive, we will
+  build a clear path together.
+intro_body_fr: >-
+  Je suis de langue maternelle française et professeure de français langue
+  étrangère **certifiée DAEFLE**. J'ai enseigné à des adultes et à des enfants,
+  en classe comme à domicile, des deux côtés de l'Atlantique. Pour moi, un bon
+  cours ressemble à une bonne conversation : attentif, encourageant et un peu
+  joyeux.
+
+
+  Que vous partiez de *bonjour* ou que vous peaufiniez votre subjonctif, nous
+  tracerons ensemble un chemin clair.
 intro_image: /uploads/images/placeholder-portrait.svg
