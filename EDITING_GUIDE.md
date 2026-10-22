@@ -49,7 +49,7 @@ Pages → Private Lessons → scroll to **Rates**. Each row has a name (EN/FR) a
 Click the image field, then **Upload** or choose an existing image. Photos look best when they are:
 - Hero photo: portrait orientation (taller than wide)
 - Section photos: landscape (wider than tall), around 1600 px wide
-- Under 1 MB each if possible (use https://squoosh.app to shrink them)
+- Under 400 KB each if possible — large photos make the site slow on phones. https://squoosh.app shrinks them in seconds (choose WebP or JPEG, quality ~75)
 
 **Turn on online booking**
 Create a free account at https://calendly.com, make an event called "Free consultation" (20 minutes), and copy its link (looks like `https://calendly.com/yourname/consultation`). Paste it into **Site settings → Calendly link**. The booking calendar appears on the Contact page automatically.
