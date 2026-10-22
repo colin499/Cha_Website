@@ -1,0 +1,607 @@
+# Pages CMS configuration — this file defines the editing screens at app.pagescms.org.
+# Every text field exists in English (EN) and French (FR) so both versions are edited together.
+
+media:
+  - name: images
+    label: Images
+    input: public/uploads/images
+    output: /uploads/images
+    categories: [image]
+    rename: safe
+  - name: files
+    label: Files (PDFs)
+    input: public/uploads/files
+    output: /uploads/files
+    categories: [document]
+    rename: safe
+
+components:
+  image:
+    type: image
+    options:
+      media: images
+      path: public/uploads/images
+  richtext:
+    type: rich-text
+    options:
+      format: markdown
+      media: images
+      path: public/uploads/images
+
+content:
+  # ---------- Site-wide settings ----------
+  - name: settings
+    label: Site settings
+    type: file
+    path: src/data/settings.json
+    format: json
+    fields:
+      - name: site_name
+        label: Site name (shown in header and browser tab)
+        type: string
+        required: true
+      - name: teacher_name
+        label: Your name
+        type: string
+        required: true
+      - name: email
+        label: Contact email
+        type: string
+      - name: phone
+        label: Phone (optional)
+        type: string
+      - name: location_en
+        label: Location (EN)
+        type: string
+      - name: location_fr
+        label: Lieu (FR)
+        type: string
+      - name: calendly_url
+        label: Calendly link
+        description: "Paste your Calendly event link, e.g. https://calendly.com/yourname/consultation. Leave empty to hide the booking calendar."
+        type: string
+      - name: instagram
+        label: Instagram URL (optional)
+        type: string
+      - name: linkedin
+        label: LinkedIn URL (optional)
+        type: string
+      - name: tagline_en
+        label: Tagline (EN) — used for search engines
+        type: text
+      - name: tagline_fr
+        label: Slogan (FR)
+        type: text
+
+  # ---------- Pages ----------
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: home
+        label: Home page
+        type: file
+        path: src/content/pages/home.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+            hidden: true
+          - name: title_fr
+            label: Page title (FR)
+            type: string
+            hidden: true
+          - name: hero_eyebrow_en
+            label: Small line above the headline (EN)
+            type: string
+          - name: hero_eyebrow_fr
+            label: Petite ligne au-dessus du titre (FR)
+            type: string
+          - name: hero_title_en
+            label: Headline (EN)
+            type: text
+          - name: hero_title_fr
+            label: Titre principal (FR)
+            type: text
+          - name: hero_text_en
+            label: Headline paragraph (EN)
+            type: text
+          - name: hero_text_fr
+            label: Paragraphe d'accroche (FR)
+            type: text
+          - name: hero_image
+            label: Hero photo
+            component: image
+          - name: offerings
+            label: Three offering cards
+            type: object
+            list: true
+            fields:
+              - name: title_en
+                label: Title (EN)
+                type: string
+              - name: title_fr
+                label: Titre (FR)
+                type: string
+              - name: text_en
+                label: Text (EN)
+                type: text
+              - name: text_fr
+                label: Texte (FR)
+                type: text
+              - name: link
+                label: Links to page
+                type: select
+                options:
+                  values:
+                    - name: lessons
+                      label: Private Lessons
+                    - name: homeschool
+                      label: Homeschool Curriculum
+                    - name: resources
+                      label: Resources
+                    - name: about
+                      label: About
+                    - name: contact
+                      label: Contact
+          - name: intro_heading_en
+            label: Intro heading (EN)
+            type: string
+          - name: intro_heading_fr
+            label: Titre d'introduction (FR)
+            type: string
+          - name: intro_body_en
+            label: Intro text (EN)
+            component: richtext
+          - name: intro_body_fr
+            label: Texte d'introduction (FR)
+            component: richtext
+          - name: intro_image
+            label: Intro photo (portrait)
+            component: image
+
+      - name: lessons
+        label: Private Lessons
+        type: file
+        path: src/content/pages/lessons.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+          - name: title_fr
+            label: Titre de la page (FR)
+            type: string
+          - name: intro_en
+            label: Intro (EN)
+            type: text
+          - name: intro_fr
+            label: Introduction (FR)
+            type: text
+          - name: adults_heading_en
+            label: Adults — heading (EN)
+            type: string
+          - name: adults_heading_fr
+            label: Adultes — titre (FR)
+            type: string
+          - name: adults_body_en
+            label: Adults — text (EN)
+            component: richtext
+          - name: adults_body_fr
+            label: Adultes — texte (FR)
+            component: richtext
+          - name: adults_image
+            label: Adults — photo
+            component: image
+          - name: children_heading_en
+            label: Children — heading (EN)
+            type: string
+          - name: children_heading_fr
+            label: Enfants — titre (FR)
+            type: string
+          - name: children_body_en
+            label: Children — text (EN)
+            component: richtext
+          - name: children_body_fr
+            label: Enfants — texte (FR)
+            component: richtext
+          - name: children_image
+            label: Children — photo
+            component: image
+          - name: pricing_heading_en
+            label: Rates — heading (EN)
+            type: string
+          - name: pricing_heading_fr
+            label: Tarifs — titre (FR)
+            type: string
+          - name: pricing
+            label: Rates
+            type: object
+            list: true
+            fields:
+              - name: name_en
+                label: Lesson type (EN)
+                type: string
+              - name: name_fr
+                label: Type de cours (FR)
+                type: string
+              - name: price
+                label: Price (e.g. $85)
+                type: string
+          - name: pricing_note_en
+            label: Rates — note (EN)
+            type: text
+          - name: pricing_note_fr
+            label: Tarifs — note (FR)
+            type: text
+          - name: faq_heading_en
+            label: FAQ — heading (EN)
+            type: string
+          - name: faq_heading_fr
+            label: FAQ — titre (FR)
+            type: string
+          - name: faq
+            label: FAQ
+            type: object
+            list: true
+            fields:
+              - name: q_en
+                label: Question (EN)
+                type: string
+              - name: q_fr
+                label: Question (FR)
+                type: string
+              - name: a_en
+                label: Answer (EN)
+                type: text
+              - name: a_fr
+                label: Réponse (FR)
+                type: text
+
+      - name: curriculum
+        label: Homeschool Curriculum
+        type: file
+        path: src/content/pages/curriculum.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+          - name: title_fr
+            label: Titre de la page (FR)
+            type: string
+          - name: intro_en
+            label: Intro (EN)
+            type: text
+          - name: intro_fr
+            label: Introduction (FR)
+            type: text
+          - name: philosophy_heading_en
+            label: How it works — heading (EN)
+            type: string
+          - name: philosophy_heading_fr
+            label: Fonctionnement — titre (FR)
+            type: string
+          - name: philosophy_body_en
+            label: How it works — text (EN)
+            component: richtext
+          - name: philosophy_body_fr
+            label: Fonctionnement — texte (FR)
+            component: richtext
+          - name: nys_heading_en
+            label: New York State — heading (EN)
+            type: string
+          - name: nys_heading_fr
+            label: État de New York — titre (FR)
+            type: string
+          - name: nys_body_en
+            label: New York State — text (EN)
+            component: richtext
+          - name: nys_body_fr
+            label: État de New York — texte (FR)
+            component: richtext
+          - name: levels_heading_en
+            label: Levels — heading (EN)
+            type: string
+          - name: levels_heading_fr
+            label: Niveaux — titre (FR)
+            type: string
+          - name: levels
+            label: Levels
+            type: object
+            list: true
+            fields:
+              - name: name_en
+                label: Level name (EN)
+                type: string
+              - name: name_fr
+                label: Nom du niveau (FR)
+                type: string
+              - name: ages_en
+                label: Ages (EN)
+                type: string
+              - name: ages_fr
+                label: Âges (FR)
+                type: string
+              - name: text_en
+                label: Description (EN)
+                type: text
+              - name: text_fr
+                label: Description (FR)
+                type: text
+          - name: units_heading_en
+            label: Units — heading (EN)
+            type: string
+          - name: units_heading_fr
+            label: Unités — titre (FR)
+            type: string
+          - name: cta_heading_en
+            label: Call to action — heading (EN)
+            type: string
+          - name: cta_heading_fr
+            label: Appel à l'action — titre (FR)
+            type: string
+          - name: cta_text_en
+            label: Call to action — text (EN)
+            type: text
+          - name: cta_text_fr
+            label: Appel à l'action — texte (FR)
+            type: text
+
+      - name: resources_page
+        label: Resources page
+        type: file
+        path: src/content/pages/resources.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+          - name: title_fr
+            label: Titre de la page (FR)
+            type: string
+          - name: intro_en
+            label: Intro (EN)
+            type: text
+          - name: intro_fr
+            label: Introduction (FR)
+            type: text
+
+      - name: about
+        label: About
+        type: file
+        path: src/content/pages/about.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+          - name: title_fr
+            label: Titre de la page (FR)
+            type: string
+          - name: photo
+            label: Your photo
+            component: image
+          - name: body_en
+            label: Your story (EN)
+            component: richtext
+          - name: body_fr
+            label: Votre parcours (FR)
+            component: richtext
+          - name: daefle_heading_en
+            label: DAEFLE — heading (EN)
+            type: string
+          - name: daefle_heading_fr
+            label: DAEFLE — titre (FR)
+            type: string
+          - name: daefle_body_en
+            label: DAEFLE — text (EN)
+            component: richtext
+          - name: daefle_body_fr
+            label: DAEFLE — texte (FR)
+            component: richtext
+
+      - name: contact
+        label: Contact
+        type: file
+        path: src/content/pages/contact.yml
+        format: yaml
+        fields:
+          - name: title_en
+            label: Page title (EN)
+            type: string
+          - name: title_fr
+            label: Titre de la page (FR)
+            type: string
+          - name: intro_en
+            label: Intro (EN)
+            type: text
+          - name: intro_fr
+            label: Introduction (FR)
+            type: text
+          - name: booking_heading_en
+            label: Booking — heading (EN)
+            type: string
+          - name: booking_heading_fr
+            label: Réservation — titre (FR)
+            type: string
+          - name: booking_text_en
+            label: Booking — text (EN)
+            type: text
+          - name: booking_text_fr
+            label: Réservation — texte (FR)
+            type: text
+          - name: booking_placeholder_en
+            label: Shown when no Calendly link is set (EN)
+            type: text
+          - name: booking_placeholder_fr
+            label: Affiché sans lien Calendly (FR)
+            type: text
+          - name: form_heading_en
+            label: Form — heading (EN)
+            type: string
+          - name: form_heading_fr
+            label: Formulaire — titre (FR)
+            type: string
+          - name: form_text_en
+            label: Form — text (EN)
+            type: text
+          - name: form_text_fr
+            label: Formulaire — texte (FR)
+            type: text
+
+  # ---------- Collections ----------
+  - name: units
+    label: Curriculum units
+    type: collection
+    path: src/content/units
+    format: yaml
+    filename: "{order}-{primary}.yml"
+    view:
+      primary: title_en
+      fields: [title_en, level, order, published]
+      sort: order
+      order: asc
+    fields:
+      - name: title_en
+        label: Title (EN)
+        type: string
+        required: true
+      - name: title_fr
+        label: Titre (FR)
+        type: string
+        required: true
+      - name: order
+        label: Order (1 = first)
+        type: number
+        default: 1
+      - name: published
+        label: Show on the site
+        type: boolean
+        default: true
+      - name: level
+        label: Level
+        type: select
+        options:
+          values: [Les Petits, Les Explorateurs, Les Grands]
+      - name: age_band_en
+        label: Ages (EN)
+        type: string
+      - name: age_band_fr
+        label: Âges (FR)
+        type: string
+      - name: summary_en
+        label: One-sentence summary (EN)
+        type: text
+      - name: summary_fr
+        label: Résumé en une phrase (FR)
+        type: text
+      - name: body_en
+        label: Details (EN)
+        component: richtext
+      - name: body_fr
+        label: Détails (FR)
+        component: richtext
+      - name: image
+        label: Image
+        component: image
+
+  - name: resources
+    label: Resources (downloads)
+    type: collection
+    path: src/content/resources
+    format: yaml
+    filename: "{primary}.yml"
+    view:
+      primary: title_en
+      fields: [title_en, kind, level, order, published]
+      sort: order
+      order: asc
+    fields:
+      - name: title_en
+        label: Title (EN)
+        type: string
+        required: true
+      - name: title_fr
+        label: Titre (FR)
+        type: string
+        required: true
+      - name: description_en
+        label: Description (EN)
+        type: text
+      - name: description_fr
+        label: Description (FR)
+        type: text
+      - name: level
+        label: Level / audience (e.g. A1–B1, Les Petits, All levels)
+        type: string
+      - name: kind
+        label: Free or paid?
+        type: select
+        default: free
+        options:
+          values:
+            - name: free
+              label: Free download
+            - name: paid
+              label: Paid (buy link)
+      - name: price
+        label: Price shown on the card (paid only, e.g. $12)
+        type: string
+      - name: cover
+        label: Cover image
+        component: image
+      - name: file
+        label: PDF file (free resources)
+        type: file
+        options:
+          media: files
+          path: public/uploads/files
+          extensions: [pdf]
+      - name: buy_url
+        label: Buy link (paid resources — Stripe Payment Link or Gumroad)
+        type: string
+      - name: order
+        label: Order (1 = first)
+        type: number
+        default: 1
+      - name: published
+        label: Show on the site
+        type: boolean
+        default: true
+
+  - name: testimonials
+    label: Testimonials
+    type: collection
+    path: src/content/testimonials
+    format: yaml
+    filename: "{primary}.yml"
+    view:
+      primary: name
+      fields: [name, order]
+      sort: order
+      order: asc
+    fields:
+      - name: name
+        label: Name (as shown)
+        type: string
+        required: true
+      - name: quote_en
+        label: Quote (EN)
+        type: text
+        required: true
+      - name: quote_fr
+        label: Citation (FR)
+        type: text
+        required: true
+      - name: context_en
+        label: Context (EN), e.g. "Adult student, Brooklyn"
+        type: string
+      - name: context_fr
+        label: Contexte (FR)
+        type: string
+      - name: order
+        label: Order (1 = first)
+        type: number
+        default: 1

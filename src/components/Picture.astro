@@ -1,0 +1,23 @@
+---
+// Plain <img> for CMS-uploaded files in /public/uploads. Shows a soft placeholder when the path is empty.
+interface Props {
+  src?: string;
+  alt: string;
+  class?: string;
+  placeholder?: string;
+}
+
+const { src, alt, class: cls = '', placeholder = '' } = Astro.props;
+---
+
+{
+  src ? (
+    <div class={cls}>
+      <img src={src} alt={alt} loading="lazy" />
+    </div>
+  ) : (
+    <div class={`${cls} card-image--placeholder`.trim()} aria-hidden="true">
+      {placeholder}
+    </div>
+  )
+}

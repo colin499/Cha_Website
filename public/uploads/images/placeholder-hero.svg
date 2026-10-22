@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8eef5"/><stop offset="1" stop-color="#f6e9e6"/></linearGradient></defs>
+  <rect width="800" height="1000" fill="url(#g)"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="66" fill="#2f4a6d" opacity="0.55">Bonjour</text>
+  <text x="50%" y="917" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#2f4a6d" opacity="0.5">placeholder — replace in the CMS</text>
+</svg>

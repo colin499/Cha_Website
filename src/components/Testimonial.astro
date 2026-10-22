@@ -1,0 +1,18 @@
+---
+import { loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  item: Record<string, unknown>;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+---
+
+<figure class="testimonial">
+  <blockquote>{loc(item, 'quote', lang)}</blockquote>
+  <figcaption>
+    <strong>{item.name as string}</strong>
+    {loc(item, 'context', lang) && <span> · {loc(item, 'context', lang)}</span>}
+  </figcaption>
+</figure>

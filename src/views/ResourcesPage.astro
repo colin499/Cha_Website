@@ -1,0 +1,31 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import { loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'resources'))!.data as Record<string, any>;
+const items = (await getCollection('resources', (r) => r.data.published)).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base lang={lang} slug="resources" title={loc(page, 'title', lang)} description={loc(page, 'intro', lang)}>
+  <header class="page-header">
+    <div class="container">
+      <h1>{loc(page, 'title', lang)}</h1>
+      <p class="lead">{loc(page, 'intro', lang)}</p>
+    </div>
+  </header>
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="grid grid--3">
+        {items.map((r) => <ResourceCard item={r.data} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+</Base>

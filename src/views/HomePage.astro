@@ -1,0 +1,83 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Base from '../layouts/Base.astro';
+import Prose from '../components/Prose.astro';
+import Picture from '../components/Picture.astro';
+import Testimonial from '../components/Testimonial.astro';
+import settings from '../data/settings.json';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'home'))!.data as Record<string, any>;
+const testimonials = (await getCollection('testimonials')).sort((a, b) => a.data.order - b.data.order);
+const offerings = (page.offerings ?? []) as Record<string, string>[];
+---
+
+<Base lang={lang} slug="" title="" description={loc(settings, 'tagline', lang)}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{loc(page, 'hero_eyebrow', lang)}</p>
+        <h1>{loc(page, 'hero_title', lang)}</h1>
+        <p class="lead">{loc(page, 'hero_text', lang)}</p>
+        <div class="btn-row">
+          <a class="btn" href={getRelativeLocaleUrl(lang, 'contact')}>{t(lang, 'cta.book')}</a>
+          <a class="btn btn--ghost" href={getRelativeLocaleUrl(lang, 'lessons')}>{t(lang, 'nav.lessons')}</a>
+        </div>
+      </div>
+      <Picture src={page.hero_image} alt="" class="hero-image" placeholder="Bonjour" />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="grid grid--3">
+        {
+          offerings.map((o) => (
+            <div class="card">
+              <h3>{loc(o, 'title', lang)}</h3>
+              <p>{loc(o, 'text', lang)}</p>
+              <a class="card-link" href={getRelativeLocaleUrl(lang, o.link ?? '')}>
+                {t(lang, 'cta.learn')}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <Picture src={page.intro_image} alt={settings.teacher_name} class="split-image split-image--portrait" placeholder="Fr" />
+      <div>
+        <p class="eyebrow">{t(lang, 'footer.credential')}</p>
+        <h2>{loc(page, 'intro_heading', lang)}</h2>
+        <Prose text={loc(page, 'intro_body', lang)} />
+        <div class="btn-row">
+          <a class="btn btn--ghost" href={getRelativeLocaleUrl(lang, 'about')}>{t(lang, 'nav.about')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    testimonials.length > 0 && (
+      <section class="section section--alt">
+        <div class="container">
+          <h2 class="center">{t(lang, 'home.testimonials')}</h2>
+          <div class="grid grid--2" style="margin-top:2rem">
+            {testimonials.map((item) => (
+              <Testimonial item={item.data} lang={lang} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>

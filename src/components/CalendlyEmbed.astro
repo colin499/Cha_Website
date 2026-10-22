@@ -1,0 +1,19 @@
+---
+interface Props {
+  url: string;
+  placeholder: string;
+}
+
+const { url, placeholder } = Astro.props;
+---
+
+{
+  url ? (
+    <>
+      <div class="calendly-inline-widget" data-url={url} style="min-width:320px;height:700px;" />
+      <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async />
+    </>
+  ) : (
+    <p class="notice">{placeholder}</p>
+  )
+}

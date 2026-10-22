@@ -1,0 +1,54 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import settings from '../data/settings.json';
+import { t, nav, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const other: Lang = lang === 'en' ? 'fr' : 'en';
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={getRelativeLocaleUrl(lang, '')}>{settings.site_name}</a>
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label={t(lang, 'nav.menu')}
+    >
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" data-nav>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={getRelativeLocaleUrl(lang, item.slug)} aria-current={item.slug === slug ? 'page' : undefined}>
+                {t(lang, item.key)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="lang-toggle" href={getRelativeLocaleUrl(other, slug)} lang={other} hreflang={other}>
+        {other === 'fr' ? 'Français' : 'English'}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open') ?? false;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

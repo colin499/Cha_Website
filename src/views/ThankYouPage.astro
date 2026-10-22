@@ -1,0 +1,23 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Base from '../layouts/Base.astro';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<Base lang={lang} slug="thank-you" title={t(lang, 'form.thanks.title')}>
+  <section class="section center">
+    <div class="container">
+      <h1>{t(lang, 'form.thanks.title')}</h1>
+      <p class="lead">{t(lang, 'form.thanks.body')}</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn--ghost" href={getRelativeLocaleUrl(lang, '')}>{t(lang, 'notfound.home')}</a>
+      </div>
+    </div>
+  </section>
+</Base>

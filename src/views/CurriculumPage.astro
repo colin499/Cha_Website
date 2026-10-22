@@ -1,0 +1,75 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Base from '../layouts/Base.astro';
+import Prose from '../components/Prose.astro';
+import UnitCard from '../components/UnitCard.astro';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'curriculum'))!.data as Record<string, any>;
+const levels = (page.levels ?? []) as Record<string, string>[];
+const units = (await getCollection('units', (u) => u.data.published)).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base lang={lang} slug="homeschool" title={loc(page, 'title', lang)} description={loc(page, 'intro', lang)}>
+  <header class="page-header">
+    <div class="container">
+      <h1>{loc(page, 'title', lang)}</h1>
+      <p class="lead">{loc(page, 'intro', lang)}</p>
+    </div>
+  </header>
+
+  <section class="section--tight">
+    <div class="container grid grid--2">
+      <div>
+        <h2>{loc(page, 'philosophy_heading', lang)}</h2>
+        <Prose text={loc(page, 'philosophy_body', lang)} />
+      </div>
+      <div>
+        <h2>{loc(page, 'nys_heading', lang)}</h2>
+        <Prose text={loc(page, 'nys_body', lang)} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>{loc(page, 'levels_heading', lang)}</h2>
+      <div class="grid grid--3" style="margin-top:1.5rem">
+        {
+          levels.map((lvl) => (
+            <div class="level">
+              <h3>{loc(lvl, 'name', lang)}</h3>
+              <div class="ages">{loc(lvl, 'ages', lang)}</div>
+              <p>{loc(lvl, 'text', lang)}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{loc(page, 'units_heading', lang)}</h2>
+      <div class="grid grid--3" style="margin-top:1.5rem">
+        {units.map((u) => <UnitCard unit={u.data} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="cta-band">
+        <h2>{loc(page, 'cta_heading', lang)}</h2>
+        <p>{loc(page, 'cta_text', lang)}</p>
+        <a class="btn" href={getRelativeLocaleUrl(lang, 'contact')}>{t(lang, 'cta.book')}</a>
+      </div>
+    </div>
+  </section>
+</Base>

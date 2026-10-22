@@ -1,0 +1,35 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Prose from '../components/Prose.astro';
+import Picture from '../components/Picture.astro';
+import settings from '../data/settings.json';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'about'))!.data as Record<string, any>;
+---
+
+<Base lang={lang} slug="about" title={loc(page, 'title', lang)} description={t(lang, 'footer.credential')}>
+  <section class="section">
+    <div class="container split">
+      <Picture src={page.photo} alt={settings.teacher_name} class="split-image split-image--portrait" placeholder="Fr" />
+      <div>
+        <p class="eyebrow">{t(lang, 'footer.credential')}</p>
+        <h1>{settings.teacher_name}</h1>
+        <Prose text={loc(page, 'body', lang)} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>{loc(page, 'daefle_heading', lang)}</h2>
+      <Prose text={loc(page, 'daefle_body', lang)} />
+    </div>
+  </section>
+</Base>

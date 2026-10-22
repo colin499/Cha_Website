@@ -1,0 +1,84 @@
+---
+import { getEntry } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Base from '../layouts/Base.astro';
+import Prose from '../components/Prose.astro';
+import Picture from '../components/Picture.astro';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'lessons'))!.data as Record<string, any>;
+const pricing = (page.pricing ?? []) as Record<string, string>[];
+const faq = (page.faq ?? []) as Record<string, string>[];
+---
+
+<Base lang={lang} slug="lessons" title={loc(page, 'title', lang)} description={loc(page, 'intro', lang)}>
+  <header class="page-header">
+    <div class="container">
+      <h1>{loc(page, 'title', lang)}</h1>
+      <p class="lead">{loc(page, 'intro', lang)}</p>
+    </div>
+  </header>
+
+  <section class="section--tight">
+    <div class="container split">
+      <div>
+        <h2>{loc(page, 'adults_heading', lang)}</h2>
+        <Prose text={loc(page, 'adults_body', lang)} />
+      </div>
+      <Picture src={page.adults_image} alt="" class="split-image" placeholder="A1–C2" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split split--reverse">
+      <div>
+        <h2>{loc(page, 'children_heading', lang)}</h2>
+        <Prose text={loc(page, 'children_body', lang)} />
+      </div>
+      <Picture src={page.children_image} alt="" class="split-image" placeholder="4–16" />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <h2>{loc(page, 'pricing_heading', lang)}</h2>
+      <ul class="pricing">
+        {
+          pricing.map((row) => (
+            <li>
+              <span>{loc(row, 'name', lang)}</span>
+              <span class="price">{row.price}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="muted">{loc(page, 'pricing_note', lang)}</p>
+      <div class="btn-row">
+        <a class="btn" href={getRelativeLocaleUrl(lang, 'contact')}>{t(lang, 'cta.book')}</a>
+      </div>
+    </div>
+  </section>
+
+  {
+    faq.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <h2>{loc(page, 'faq_heading', lang)}</h2>
+          <div style="max-width:720px">
+            {faq.map((item) => (
+              <details>
+                <summary>{loc(item, 'q', lang)}</summary>
+                <Prose text={loc(item, 'a', lang)} />
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>

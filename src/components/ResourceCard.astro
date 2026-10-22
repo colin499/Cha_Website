@@ -1,0 +1,31 @@
+---
+import Picture from './Picture.astro';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  item: Record<string, unknown>;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+const isFree = item.kind === 'free';
+const file = item.file as string;
+const buyUrl = item.buy_url as string;
+const price = item.price as string;
+---
+
+<article class="card card--media">
+  <Picture src={item.cover as string} alt="" class="card-image" placeholder="Fr" />
+  <div class="card-body">
+    <div class="badge-row">
+      <span class={`badge ${isFree ? '' : 'badge--rose'}`}>{isFree ? t(lang, 'label.free') : price || t(lang, 'label.paid')}</span>
+      {item.level && <span class="badge">{item.level}</span>}
+    </div>
+    <h3>{loc(item, 'title', lang)}</h3>
+    <p>{loc(item, 'description', lang)}</p>
+    <div class="btn-row">
+      {isFree && file && <a class="btn btn--small" href={file} download>{t(lang, 'cta.download')}</a>}
+      {!isFree && buyUrl && <a class="btn btn--small" href={buyUrl} rel="noopener">{t(lang, 'cta.buy')}</a>}
+    </div>
+  </div>
+</article>

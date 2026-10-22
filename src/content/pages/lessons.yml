@@ -1,0 +1,75 @@
+title_en: Private Lessons
+title_fr: Cours particuliers
+intro_en: One-on-one French lessons in Manhattan, Brooklyn, or online, for adults and children of every level.
+intro_fr: Cours de français individuels à Manhattan, Brooklyn ou en ligne, pour adultes et enfants de tous niveaux.
+adults_heading_en: Lessons for adults
+adults_heading_fr: Cours pour adultes
+adults_body_en: |
+  Adult lessons follow the **CEFR levels (A1 to C2)** so progress is visible and measurable. Together we decide what matters most to you:
+
+  - Conversation and pronunciation
+  - Grammar that finally makes sense
+  - Preparation for the DELF / DALF exams
+  - French for travel, relocation, or work
+  - Reading French literature or news in the original
+
+  Sessions are 60 or 90 minutes, weekly or twice weekly. Homework is optional but encouraged.
+adults_body_fr: |
+  Les cours pour adultes suivent les **niveaux du CECRL (A1 à C2)** : les progrès sont visibles et mesurables. Nous décidons ensemble de vos priorités :
+
+  - Conversation et prononciation
+  - Une grammaire enfin claire
+  - Préparation au DELF / DALF
+  - Le français pour voyager, s'installer ou travailler
+  - Lire la littérature ou la presse en version originale
+
+  Les séances durent 60 ou 90 minutes, une ou deux fois par semaine. Les devoirs sont facultatifs mais encouragés.
+adults_image: /uploads/images/placeholder-landscape.svg
+children_heading_en: Lessons for children
+children_heading_fr: Cours pour enfants
+children_body_en: |
+  Children learn best when they forget they are learning. Lessons for **ages 4 to 16** use songs, stories, games, and lots of speaking, with structure growing as the student does.
+
+  - Early learners (4–7): immersion through play, songs, and picture books
+  - Elementary (8–11): reading, writing, and first grammar, gently
+  - Middle & high school (12–16): school support, DELF Junior, and real conversation
+
+  Parents receive a short note after each lesson with what we covered and how to practice at home.
+children_body_fr: |
+  Les enfants apprennent le mieux quand ils oublient qu'ils apprennent. Les cours pour les **4 à 16 ans** s'appuient sur des chansons, des histoires, des jeux et beaucoup d'oral, avec une structure qui grandit avec l'élève.
+
+  - Petits (4–7 ans) : immersion par le jeu, les chansons et les albums
+  - Primaire (8–11 ans) : lecture, écriture et premières notions de grammaire, en douceur
+  - Collège et lycée (12–16 ans) : soutien scolaire, DELF Junior et vraie conversation
+
+  Après chaque cours, les parents reçoivent un petit mot sur ce que nous avons vu et comment s'entraîner à la maison.
+children_image: /uploads/images/placeholder-landscape.svg
+pricing_heading_en: Rates
+pricing_heading_fr: Tarifs
+pricing_note_en: All rates are per session. Packages of 10 lessons receive a 10% discount. A first 20-minute consultation is always free.
+pricing_note_fr: Tarifs par séance. Les forfaits de 10 cours bénéficient de 10 % de réduction. Le premier échange de 20 minutes est toujours gratuit.
+pricing:
+  - name_en: Online, 60 minutes
+    name_fr: En ligne, 60 minutes
+    price: $85
+  - name_en: In person, 60 minutes
+    name_fr: En présentiel, 60 minutes
+    price: $110
+  - name_en: In person, 90 minutes
+    name_fr: En présentiel, 90 minutes
+    price: $150
+faq_heading_en: Questions families often ask
+faq_heading_fr: Les questions fréquentes
+faq:
+  - q_en: Where do in-person lessons take place?
+    q_fr: Où ont lieu les cours en présentiel ?
+    a_en: At your home in Manhattan or Brooklyn. Other boroughs may be possible with a small travel fee.
+    a_fr: À votre domicile à Manhattan ou Brooklyn. Les autres arrondissements sont possibles avec un petit supplément de déplacement.
+  - q_en: What is your cancellation policy?
+    q_fr: Quelle est votre politique d'annulation ?
+    a_en: Lessons cancelled with at least 24 hours' notice can be rescheduled at no charge.
+    a_fr: Les cours annulés au moins 24 heures à l'avance peuvent être reportés sans frais.
+  - q_en: Do you teach complete beginners?
+    q_fr: Enseignez-vous aux grands débutants ?
+    a_en: Absolutely. Many of my students started with no French at all.
+    a_fr: Bien sûr. Beaucoup de mes élèves ont commencé sans aucune notion de français.

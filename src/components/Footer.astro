@@ -1,0 +1,46 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import settings from '../data/settings.json';
+import { t, nav, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href={getRelativeLocaleUrl(lang, '')}>{settings.site_name}</a>
+        <p>{t(lang, 'footer.credential')}</p>
+        <p>{loc(settings, 'location', lang)}</p>
+      </div>
+      <div>
+        <ul>
+          {
+            nav.map((item) => (
+              <li>
+                <a href={getRelativeLocaleUrl(lang, item.slug)}>{t(lang, item.key)}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <ul>
+          {settings.email && <li><a href={`mailto:${settings.email}`}>{settings.email}</a></li>}
+          {settings.phone && <li><a href={`tel:${settings.phone}`}>{settings.phone}</a></li>}
+          {settings.instagram && <li><a href={settings.instagram} rel="noopener">Instagram</a></li>}
+          {settings.linkedin && <li><a href={settings.linkedin} rel="noopener">LinkedIn</a></li>}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © {year} {settings.teacher_name}. {t(lang, 'footer.rights')}
+    </div>
+  </div>
+</footer>

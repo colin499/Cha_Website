@@ -1,0 +1,64 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<!-- Netlify Forms: detected at build time via data-netlify. Submissions arrive in the Netlify dashboard and by email. -->
+<form
+  class="form"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action={getRelativeLocaleUrl(lang, 'thank-you')}
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="lang" value={lang} />
+  <p class="hidden">
+    <label>Leave this empty: <input name="bot-field" /></label>
+  </p>
+
+  <div>
+    <label for="name">{t(lang, 'form.name')}</label>
+    <input id="name" name="name" type="text" required autocomplete="name" />
+  </div>
+
+  <div>
+    <label for="email">{t(lang, 'form.email')}</label>
+    <input id="email" name="email" type="email" required autocomplete="email" />
+  </div>
+
+  <div>
+    <label for="student">{t(lang, 'form.student')}</label>
+    <select id="student" name="student" required>
+      <option value="adult">{t(lang, 'form.student.adult')}</option>
+      <option value="child">{t(lang, 'form.student.child')}</option>
+      <option value="homeschool">{t(lang, 'form.student.homeschool')}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="level">{t(lang, 'form.level')}</label>
+    <select id="level" name="level">
+      <option value="beginner">{t(lang, 'form.level.none')}</option>
+      <option value="basics">{t(lang, 'form.level.some')}</option>
+      <option value="intermediate">{t(lang, 'form.level.inter')}</option>
+      <option value="advanced">{t(lang, 'form.level.adv')}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="message">{t(lang, 'form.message')}</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+
+  <div>
+    <button class="btn" type="submit">{t(lang, 'form.send')}</button>
+  </div>
+</form>

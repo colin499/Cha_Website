@@ -1,0 +1,40 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import settings from '../data/settings.json';
+import { loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const page = (await getEntry('pages', 'contact'))!.data as Record<string, any>;
+---
+
+<Base lang={lang} slug="contact" title={loc(page, 'title', lang)} description={loc(page, 'intro', lang)}>
+  <header class="page-header">
+    <div class="container">
+      <h1>{loc(page, 'title', lang)}</h1>
+      <p class="lead">{loc(page, 'intro', lang)}</p>
+    </div>
+  </header>
+
+  <section class="section--tight">
+    <div class="container">
+      <h2>{loc(page, 'booking_heading', lang)}</h2>
+      <p class="muted">{loc(page, 'booking_text', lang)}</p>
+      <CalendlyEmbed url={settings.calendly_url} placeholder={loc(page, 'booking_placeholder', lang)} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{loc(page, 'form_heading', lang)}</h2>
+      <p class="muted" style="max-width:60ch">{loc(page, 'form_text', lang)}</p>
+      <ContactForm lang={lang} />
+    </div>
+  </section>
+</Base>

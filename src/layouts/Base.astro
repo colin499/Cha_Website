@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import settings from '../data/settings.json';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+  title: string;
+  description?: string;
+}
+
+const { lang, slug, title, description = '' } = Astro.props;
+const fullTitle = title ? `${title} · ${settings.site_name}` : settings.site_name;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href={getRelativeLocaleUrl('en', slug)} />
+    <link rel="alternate" hreflang="fr" href={getRelativeLocaleUrl('fr', slug)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header lang={lang} slug={slug} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

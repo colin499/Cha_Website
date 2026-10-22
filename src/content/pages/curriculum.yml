@@ -1,0 +1,53 @@
+title_en: Homeschool French Curriculum
+title_fr: Programme de français homeschool
+intro_en: A complete, sequenced French program for homeschooling families in New York City, taught by me or guided by you.
+intro_fr: Un programme de français complet et progressif pour les familles homeschool de New York, enseigné par moi ou guidé par vous.
+philosophy_heading_en: How the program works
+philosophy_heading_fr: Comment fonctionne le programme
+philosophy_body_en: |
+  The curriculum is organized into **thematic units** of four to six weeks. Each unit includes a parent guide, lesson plans, printable materials, audio recordings by a native speaker, and a short assessment.
+
+  Families can choose:
+
+  - **Guided**: I teach weekly lessons (in person or online) and you reinforce between sessions.
+  - **Independent**: you teach from the parent guide, with an optional monthly check-in with me.
+philosophy_body_fr: |
+  Le programme est organisé en **unités thématiques** de quatre à six semaines. Chaque unité comprend un guide pour les parents, des plans de cours, des supports imprimables, des enregistrements audio par une locutrice native et une courte évaluation.
+
+  Les familles peuvent choisir :
+
+  - **Accompagné** : j'assure un cours hebdomadaire (en présentiel ou en ligne) et vous renforcez entre les séances.
+  - **Autonome** : vous enseignez à partir du guide parent, avec un point mensuel facultatif avec moi.
+nys_heading_en: Designed for New York State homeschoolers
+nys_heading_fr: Conçu pour l'école à la maison dans l'État de New York
+nys_body_en: |
+  Every unit lists its learning objectives and hours of instruction, so it slots neatly into your **IHIP** and your **quarterly reports**. At the end of each year I provide a written narrative evaluation you can include in your annual assessment.
+nys_body_fr: |
+  Chaque unité précise ses objectifs d'apprentissage et ses heures d'enseignement, pour s'intégrer facilement à votre **IHIP** et à vos **rapports trimestriels**. En fin d'année, je fournis une évaluation écrite que vous pouvez joindre à votre bilan annuel.
+levels_heading_en: Levels
+levels_heading_fr: Niveaux
+levels:
+  - name_en: Les Petits
+    name_fr: Les Petits
+    ages_en: Ages 5–7
+    ages_fr: 5–7 ans
+    text_en: Oral immersion through songs, stories, and routines. First letters and sounds.
+    text_fr: Immersion orale par les chansons, les histoires et les routines. Premières lettres et premiers sons.
+  - name_en: Les Explorateurs
+    name_fr: Les Explorateurs
+    ages_en: Ages 8–11
+    ages_fr: 8–11 ans
+    text_en: Reading and writing take off. Present tense, everyday vocabulary, and short projects.
+    text_fr: La lecture et l'écriture décollent. Présent, vocabulaire du quotidien et petits projets.
+  - name_en: Les Grands
+    name_fr: Les Grands
+    ages_en: Ages 12–16
+    ages_fr: 12–16 ans
+    text_en: Structured grammar, francophone culture, and preparation for DELF Junior A1–B1.
+    text_fr: Grammaire structurée, culture francophone et préparation au DELF Junior A1–B1.
+units_heading_en: Curriculum units
+units_heading_fr: Les unités du programme
+cta_heading_en: Interested in the curriculum?
+cta_heading_fr: Le programme vous intéresse ?
+cta_text_en: Book a free consultation and we will find the right level and format for your family.
+cta_text_fr: Réservez un premier échange gratuit et nous trouverons ensemble le bon niveau et le bon format pour votre famille.

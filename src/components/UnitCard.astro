@@ -1,0 +1,34 @@
+---
+import Picture from './Picture.astro';
+import Prose from './Prose.astro';
+import { t, loc, type Lang } from '../i18n/ui';
+
+interface Props {
+  unit: Record<string, unknown>;
+  lang: Lang;
+}
+
+const { unit, lang } = Astro.props;
+const title = loc(unit, 'title', lang);
+const body = loc(unit, 'body', lang);
+---
+
+<article class="card card--media">
+  <Picture src={unit.image as string} alt="" class="card-image" placeholder="Fr" />
+  <div class="card-body">
+    <div class="badge-row">
+      {unit.level && <span class="badge">{unit.level}</span>}
+      {loc(unit, 'age_band', lang) && <span class="badge badge--rose">{loc(unit, 'age_band', lang)}</span>}
+    </div>
+    <h3>{title}</h3>
+    <p>{loc(unit, 'summary', lang)}</p>
+    {
+      body && (
+        <details>
+          <summary>{t(lang, 'cta.details')}</summary>
+          <Prose text={body} />
+        </details>
+      )
+    }
+  </div>
+</article>
