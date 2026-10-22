@@ -101,7 +101,8 @@ export function t(lang: Lang, key: UIKey): string {
 }
 
 // Reads `${key}_${lang}` from a content object, falling back to English.
-export function loc(obj: Record<string, unknown>, key: string, lang: Lang): string {
-  const v = obj[`${key}_${lang}`] ?? obj[`${key}_en`] ?? '';
+export function loc(obj: object, key: string, lang: Lang): string {
+  const o = obj as Record<string, unknown>;
+  const v = o[`${key}_${lang}`] ?? o[`${key}_en`] ?? '';
   return typeof v === 'string' ? v : '';
 }
