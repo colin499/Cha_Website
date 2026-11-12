@@ -1,15 +1,19 @@
 /* ---------- Design tokens ---------- */
 :root {
-  --bg: #faf8f4;
-  --surface: #ffffff;
-  --ink: #2b2b2b;
-  --muted: #6b6560;
-  --accent: #2f4a6d;
-  --accent-ink: #223752;
-  --accent-soft: #e8eef5;
-  --rose: #c9857a;
-  --rose-soft: #f6e9e6;
-  --rule: #e7e1d8;
+  --bg: #fdf6ea;
+  --surface: #fffaf2;
+  --ink: #2a1f1e;
+  --muted: #6f5b55;
+  --accent: #9b2d3f;
+  --accent-ink: #751f2f;
+  --accent-soft: #f8e2e3;
+  --rose: #d9694f;
+  --rose-soft: #fbe6de;
+  --gold: #d9a441;
+  --gold-ink: #8f5c0e;
+  --gold-soft: #fbefd4;
+  --peach: #fbeee0;
+  --rule: #ecdfcd;
 
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -18,7 +22,7 @@
   --radius-sm: 8px;
   --container: 1100px;
   --gutter: 16px;
-  --shadow: 0 10px 30px rgba(43, 43, 43, 0.06);
+  --shadow: 0 10px 30px rgba(90, 40, 40, 0.08);
 }
 
 /* ---------- Base ---------- */
@@ -101,18 +105,29 @@ ol {
   padding: clamp(2rem, 5vw, 3.5rem) 0;
 }
 .section--alt {
-  background: var(--surface);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  background: var(--peach);
 }
 
 .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold-ink);
   font-weight: 600;
   margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.center .eyebrow {
+  justify-content: center;
 }
 
 .lead {
@@ -167,7 +182,7 @@ ol {
   color: var(--accent);
 }
 .btn--ghost:hover {
-  background: var(--accent-soft);
+  background: var(--rose-soft);
   color: var(--accent-ink);
 }
 .btn--small {
@@ -186,7 +201,7 @@ ol {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 248, 244, 0.92);
+  background: rgba(253, 246, 234, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--rule);
 }
@@ -302,6 +317,9 @@ ol {
 /* ---------- Hero ---------- */
 .hero {
   padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(ellipse 60% 70% at 85% 20%, var(--gold-soft) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 10% 90%, var(--rose-soft) 0%, transparent 70%);
 }
 .hero-grid {
   display: grid;
@@ -321,8 +339,10 @@ ol {
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: var(--accent-soft);
+  background: var(--gold-soft);
   box-shadow: var(--shadow);
+  outline: 6px solid var(--surface);
+  outline-offset: -6px;
 }
 .hero-image img {
   width: 100%;
@@ -345,6 +365,7 @@ ol {
 .card {
   background: var(--surface);
   border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent);
   border-radius: var(--radius);
   padding: 1.75rem;
   display: flex;
@@ -355,6 +376,12 @@ ol {
 .card:hover {
   box-shadow: var(--shadow);
   transform: translateY(-2px);
+}
+.grid > .card:nth-child(3n + 2) {
+  border-top-color: var(--gold);
+}
+.grid > .card:nth-child(3n) {
+  border-top-color: var(--rose);
 }
 .card h3 {
   margin-bottom: 0.25rem;
@@ -385,7 +412,7 @@ ol {
 }
 .card-image {
   aspect-ratio: 3 / 2;
-  background: var(--accent-soft);
+  background: var(--gold-soft);
   overflow: hidden;
 }
 .card-image img {
@@ -415,7 +442,7 @@ ol {
 }
 .badge--rose {
   background: var(--rose-soft);
-  color: #8e4f45;
+  color: #9a3f2a;
 }
 .badge-row {
   display: flex;
@@ -555,7 +582,7 @@ details .prose {
 
 /* ---------- Levels ---------- */
 .level {
-  border-left: 3px solid var(--rose);
+  border-left: 3px solid var(--gold);
   padding-left: 1.25rem;
 }
 .level h3 {
@@ -576,7 +603,7 @@ details .prose {
 
 /* ---------- CTA band ---------- */
 .cta-band {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #7a2240 100%);
   color: #fff;
   border-radius: var(--radius);
   padding: clamp(2rem, 5vw, 3.5rem);
@@ -597,7 +624,7 @@ details .prose {
   margin-top: 1rem;
 }
 .cta-band .btn:hover {
-  background: var(--accent-soft);
+  background: var(--gold-soft);
 }
 
 /* ---------- Forms ---------- */
@@ -640,10 +667,10 @@ details .prose {
 
 .notice {
   background: var(--rose-soft);
-  border: 1px solid #ecd3ce;
+  border: 1px solid #f0cfc2;
   border-radius: var(--radius-sm);
   padding: 1rem 1.25rem;
-  color: #6f4038;
+  color: #7a3a2a;
 }
 
 .calendly-inline-widget {
